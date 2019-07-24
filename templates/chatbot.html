@@ -1,0 +1,112 @@
+<!-- Reference: https://colab.research.google.com/drive/1XlmtcyMdPRQC6bw2HQYb3UPtVGKqUJ0a#scrollTo=M1wElvooTBjp -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TIS Services</title>
+    <style type="text/css">
+        #log p {
+            margin: 5px;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body onload="startSession()">
+    <div id="log" style="box-sizing: border-box;
+            width: 600px;
+            height: 32em;
+            border: 1px grey solid;
+            padding: 2px;
+            overflow: scroll;">
+    </div>
+
+    <input type="text" id="typehere" placeholder="type here"
+        style="box-sizing: border-box; width: 600px; margin-top: 5px;">
+
+    <script type="text/javascript">
+        var sessionDuration = 120000;
+        var session = true;
+
+        function paraWithText(t) {
+            let tn = document.createTextNode(t);
+            let ptag = document.createElement("p");
+            ptag.appendChild(tn);
+            return ptag;
+        }
+
+        function updateLog(str) {
+            if (session) {
+                let objDiv = document.getElementById("log");
+                objDiv.appendChild(paraWithText(str));
+                objDiv.scrollTop = objDiv.scrollHeight;
+            } else {
+                return;
+            }
+        }
+
+        document.querySelector("#typehere").onchange = async function () {
+            let inputField = document.querySelector("#typehere");
+            let val = inputField.value;
+            inputField.value = "";
+            let resp = await getResp(val);
+            updateLog("> " + val)
+            let respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
+            setTimeout(() => {
+                updateLog(resp)
+            }, respTime);
+        };
+
+        async function getResp(val) {
+            let getResp = await fetch("/response.json?sentence=" +
+                encodeURIComponent(val));
+            let data = await getResp.json();
+            return data["result"];
+        };
+
+        function startSession() {
+            let start = getStats();
+            let startStr = "*** Session Begin " + start + " ***";
+            updateLog(startStr);
+
+            setTimeout(() => {
+                endSession()
+            }, sessionDuration);
+        };
+
+        function endSession() {
+            document.getElementById("typehere").style.display = "none";
+
+            let end = getStats();
+            let endStr = "*** Session End " + end + " ***";
+            updateLog(endStr);
+
+            session = false;
+
+            let thanks = "Thank you for your time!"
+            document.body.appendChild(paraWithText(thanks));
+
+            let a = document.createElement("a");
+            let linkText = document.createTextNode(
+                "Help us develop this project by copying and pasting your chat log into this form.");
+            a.appendChild(linkText);
+            a.href = "https://docs.google.com/forms/d/e/1FAIpQLScAxWcb14R_iNtDO4DIzK1Lce2q1ow3k6gAdbZpZwIv0eLChg/viewform";
+            a.target = "_blank";
+            document.body.appendChild(a);
+
+            let why = "We will use the logs to learn how the chatbot interacts with our guests and incorporate the conversations into the final corpus."
+            document.body.appendChild(paraWithText(why));
+        };
+
+        function getStats() {
+            let timestamp = new Date(Date.now());
+            let dateTime = timestamp.toDateString() + " " + timestamp.toLocaleTimeString()
+            return dateTime;
+        };
+    </script>
+</body>
+
+</html>

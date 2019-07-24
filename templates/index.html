@@ -1,0 +1,43 @@
+<!-- Reference: Allison Parrish's Semantic Similarity Chatbot
+https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581
+https://github.com/aparrish/semanticsimilaritychatbot/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TIS Services</title>
+</head>
+
+<body>
+    <div id="startScreen">
+        <p>Thought Identification System (TIS)</p>
+        <p>Select Case:</p>
+        <select name="cases">
+            <option value="eve">Eve Polastri</option>
+        </select>
+        <p>Select Service:</p>
+        <select name="services">
+            <option value="chat">Communication Diagnostic</option>
+        </select>
+        <p>New Session:</p>
+        <form action="/session" method="POST">
+            <button type="submit" id="button" onclick="displayStatus()">Initialize</button>
+        </form>
+    </div>
+
+    <p id="status"></p>
+
+    <script type="text/javascript">
+        function displayStatus() {
+            document.getElementById("startScreen").style.display = "none";
+            document.getElementById("status").innerHTML =
+                "Initializing TIS: Communication Diagnostic Session for Eve Polastri..."
+        }
+    </script>
+</body>
+
+</html>
