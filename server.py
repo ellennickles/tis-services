@@ -7,19 +7,14 @@ import spacy
 from semanticsimilaritychatbot import SemanticSimilarityChatbot
 
 app = Flask(__name__)
-nlp = None
-chatbot = None
 
-# from: https://stackoverflow.com/questions/49715854/python-global-variables-not-defined
-def loadTIS():
-    print('loading spacy vector model...')
-    global nlp
-    nlp = spacy.load('en_core_web_lg')
+print("loading model...")
+nlp = spacy.load('en_core_web_lg')
+print("finished loading model")
 
-    print("loading chatbot...")
-    global chatbot
-    chatbot = SemanticSimilarityChatbot.load('./chatbotdb/tis_lines', nlp)
-    print("begin chatting")
+print("loading chatbot...")
+chatbot = SemanticSimilarityChatbot.load('./chatbotdb/tis_lines', nlp)
+print("begin chatting")
 
 @app.route('/')
 def home():
@@ -27,7 +22,6 @@ def home():
 
 @app.route('/session', methods=['POST'])
 def start():
-    loadTIS()
     return render_template("chatbot.html")
 
 @app.route('/response.json')
