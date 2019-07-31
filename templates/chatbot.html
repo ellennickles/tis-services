@@ -86,19 +86,16 @@
 
             session = false;
 
-            let thanks = "Thank you for your time!"
-            document.body.appendChild(paraWithText(thanks));
+            let expired = "Session Expired"
+            document.body.appendChild(paraWithText(expired));
 
             let a = document.createElement("a");
             let linkText = document.createTextNode(
-                "Help us develop this project by copying and pasting your chat log into this form.");
+                "Complete TIS Communication Diagnostic Form");
             a.appendChild(linkText);
             a.href = "https://docs.google.com/forms/d/e/1FAIpQLScAxWcb14R_iNtDO4DIzK1Lce2q1ow3k6gAdbZpZwIv0eLChg/viewform";
             a.target = "_blank";
             document.body.appendChild(a);
-
-            let why = "We will use the logs to learn how the chatbot interacts with our guests and incorporate the conversations into the final corpus."
-            document.body.appendChild(paraWithText(why));
         };
 
         function getStats() {
