@@ -10,7 +10,7 @@ import numpy as np
 from semanticsimilaritychatbot import SemanticSimilarityChatbot
 
 # amount of conversational turns
-numTurns = 1291
+numTurns = 1380
 
 # load the spacy vector model
 print("loading model...")
