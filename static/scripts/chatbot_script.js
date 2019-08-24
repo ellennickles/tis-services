@@ -1,33 +1,64 @@
-// how exactly do we want to end this? 
-// maybe should end after Eve's last response, so guest is not hanging
-// currently Session End display is set to 1.5 secs, perhaps this should be adjusted to the reading time of the final finale statement...
+// there is an overall session time limit
+// we also set a time limit for querying the chatbot
+// went the nlp timer finishes, ordered responses start printing
+// when those are finished, Eve just repeats how tired she is
+// ...until the overall session timer ends
 
 // 120000 is 2 min
 // 60000 is 1 min
 // 30000 is 30 sec
 // 15000 is 15 sec
 
-var nlpDuration = 10000;
+var sessionStatus;
+let sessionDuration = 6 * 5; // seconds * 5
+
 var nlpStatus;
-var finaleStatus;
+var nlpDuration = 10000;
+
 var finale = ["zero", "one", "two"]
 var index = 0;
+
 var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
 
-// sets session boolean to true
+// sets sessionStatus and nlpStatus booleans to true
 // retrieves current date and time to print to log
-// starts timer
+// starts timers
 function startSession() {
+    sessionStatus = true;
     nlpStatus = true;
+
     let start = getStats();
     let startStr = "*** Session Begin " + start + " ***";
     updateLog(startStr);
 
+    display = document.querySelector('#timer');
+    startTimer(sessionDuration, display);
+
     setTimeout(() => {
         nlpStatus = false;
-        finaleStatus = true;
     }, nlpDuration);
 };
+
+// timer from: https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
+function startTimer(duration, display) {
+    var time = duration, minutes, seconds;
+
+    var theTimer = setInterval(() => {
+        minutes = parseInt(time / 60, 10);
+        seconds = parseInt(time % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--time < 0) {
+            time = 0;
+            clearInterval(theTimer);
+            endSession();
+        }
+    }, 1000);
+}
 
 // receives guest input
 // clears guest input field
@@ -43,9 +74,7 @@ document.querySelector("#typehere").onchange = () => {
 
     if (nlpStatus) {
         print_nlpResp(val);
-    }; 
-
-    if (finaleStatus) {
+    } else {
         print_finaleResp();
     };
 };
@@ -55,7 +84,6 @@ document.querySelector("#typehere").onchange = () => {
 // prints that to log div after a slight delay
 async function print_nlpResp(val) {
     let nlpResp = await get_nlpResp(val);
-    // let respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
 
     setTimeout(() => {
         updateLog(nlpResp)
@@ -70,35 +98,26 @@ async function get_nlpResp(val) {
     return data["result"];
 };
 
-// if finaleStatus is true,
-// prints to log div from an array of scripted responsess
+// prints scripted resonses to log div
 function print_finaleResp() {
-    console.log(finale[index]);
+    if (index < finale.length && sessionStatus) {
+        setTimeout(() => {
+            updateLog(finale[index])
+            index++
+        }, respTime); 
+    }
 
-    // let respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
-    setTimeout(() => {
-        updateLog(finale[index])
-        index++
-
-        if (index === finale.length) {
-            setTimeout(() => {
-                console.log("session expired")
-                endSession();
-            }, 1500);   
-        };
-
-    }, respTime);
-
-    // keep this here if we want to end after user's input
-    // if (index === finale.length) {
-    //     console.log("session expired")
-    //     endSession();
-    // }
+    if (index === finale.length && sessionStatus) {
+        setTimeout(() => {
+            console.log("scripted session expired")
+            updateLog("I'm so tired");
+        }, respTime);   
+    };
 }
 
 // prints to log div
 function updateLog(str) {
-    if (nlpStatus || finaleStatus) {
+    if (sessionStatus || nlpStatus) {
         let objDiv = document.getElementById("log");
         objDiv.appendChild(paraWithText(str));
         objDiv.scrollTop = objDiv.scrollHeight;
@@ -126,7 +145,7 @@ function endSession() {
     let endStr = "*** Session End " + end + " ***";
     updateLog(endStr);
 
-    finaleStatus = false;
+    sessionStatus = false;
 
     let expired = "Session Expired"
     document.body.appendChild(paraWithText(expired));
