@@ -1,7 +1,8 @@
 // 120000 is 2 min
 // 30000 is 30 sec
+// 15000 is 15 sec
 
-var sessionDuration = 30000;
+var sessionDuration = 15000;
 var session = true;
 
 function paraWithText(t) {
@@ -9,7 +10,7 @@ function paraWithText(t) {
     let ptag = document.createElement("p");
     ptag.appendChild(tn);
     return ptag;
-}
+};
 
 function updateLog(str) {
     if (session) {
@@ -19,7 +20,7 @@ function updateLog(str) {
     } else {
         return;
     }
-}
+};
 
 document.querySelector("#typehere").onchange = async function () {
     let inputField = document.querySelector("#typehere");
@@ -61,14 +62,6 @@ function endSession() {
 
     let expired = "Session Expired"
     document.body.appendChild(paraWithText(expired));
-
-    let a = document.createElement("a");
-    let linkText = document.createTextNode(
-        "Complete TIS Communication Diagnostic Form");
-    a.appendChild(linkText);
-    a.href = "https://docs.google.com/forms/d/e/1FAIpQLScAxWcb14R_iNtDO4DIzK1Lce2q1ow3k6gAdbZpZwIv0eLChg/viewform";
-    a.target = "_blank";
-    document.body.appendChild(a);
 };
 
 function getStats() {

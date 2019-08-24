@@ -9,6 +9,7 @@ https://github.com/aparrish/semanticsimilaritychatbot/ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
     <title>TIS Services</title>
 </head>
 
@@ -31,13 +32,8 @@ https://github.com/aparrish/semanticsimilaritychatbot/ -->
 
     <p id="status"></p>
 
-    <script type="text/javascript">
-        function displayStatus() {
-            document.getElementById("startScreen").style.display = "none";
-            document.getElementById("status").innerHTML =
-                "Initializing TIS: Communication Diagnostic Session for Eve Polastri..."
-        }
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/index_script.js') }}"></script> 
+
 </body>
 
 </html>
