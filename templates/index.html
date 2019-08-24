@@ -16,14 +16,17 @@ https://github.com/aparrish/semanticsimilaritychatbot/ -->
 <body>
     <div id="startScreen">
         <p>Thought Identification System (TIS)</p>
+
         <p>Select Case:</p>
         <select name="cases">
             <option value="eve">Eve Polastri</option>
         </select>
+
         <p>Select Service:</p>
         <select name="services">
             <option value="chat">Communication Diagnostic</option>
         </select>
+        
         <p>New Session:</p>
         <form action="/session" method="POST">
             <button type="submit" id="button" onclick="displayStatus()">Initialize</button>
