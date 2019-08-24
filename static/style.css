@@ -1,0 +1,26 @@
+html,
+body {
+  margin: 20;
+  padding: 20;
+  width: width;
+}
+
+#log {
+    /* box-sizing: border-box; */
+    width: 600px;
+    height: 32em;
+    border: 1px grey solid;
+    padding: 2px;
+    overflow: scroll;
+}
+
+#log p {
+    margin: 5px;
+    font-family: sans-serif;
+}
+
+#typehere {
+  /* box-sizing: border-box;  */
+  width: 600px; 
+  margin-top: 5px;
+}
