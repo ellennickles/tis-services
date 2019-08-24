@@ -1,10 +1,13 @@
 // 120000 is 2 min
+// 60000 is 1 min
 // 30000 is 30 sec
 // 15000 is 15 sec
 
 var sessionDuration = 15000;
-var session = true;
+// var session = true;
+var session;
 
+// packages the string to print to log div
 function paraWithText(t) {
     let tn = document.createTextNode(t);
     let ptag = document.createElement("p");
@@ -12,6 +15,7 @@ function paraWithText(t) {
     return ptag;
 };
 
+// if the session is true, then prints to log div
 function updateLog(str) {
     if (session) {
         let objDiv = document.getElementById("log");
@@ -22,6 +26,10 @@ function updateLog(str) {
     }
 };
 
+// receives user input
+// passes user input value to the getResp function
+// clears user input field
+// and when getResp returns, prints to log div after a slight delay
 document.querySelector("#typehere").onchange = async function () {
     let inputField = document.querySelector("#typehere");
     let val = inputField.value;
@@ -34,6 +42,7 @@ document.querySelector("#typehere").onchange = async function () {
     }, respTime);
 };
 
+// queries the chatbot model for a response to user input 
 async function getResp(val) {
     let getResp = await fetch("/response.json?sentence=" +
         encodeURIComponent(val));
@@ -41,7 +50,11 @@ async function getResp(val) {
     return data["result"];
 };
 
+// sets session boolean to true
+// retrieves current date and time to print to log
+// starts timer
 function startSession() {
+    session = true;
     let start = getStats();
     let startStr = "*** Session Begin " + start + " ***";
     updateLog(startStr);
@@ -51,6 +64,11 @@ function startSession() {
     }, sessionDuration);
 };
 
+// when timer ends,
+// removes user input field from view
+// retrieves the current date and time to print to log div
+// sets the session boolean to false
+// prints text at the bottom of document
 function endSession() {
     document.getElementById("typehere").style.display = "none";
 
@@ -64,6 +82,7 @@ function endSession() {
     document.body.appendChild(paraWithText(expired));
 };
 
+// returns the current date and time
 function getStats() {
     let timestamp = new Date(Date.now());
     let dateTime = timestamp.toDateString() + " " + timestamp.toLocaleTimeString()
