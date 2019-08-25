@@ -24,16 +24,33 @@ https://github.com/aparrish/semanticsimilaritychatbot/ -->
 
         <p>Select Service:</p>
         <select name="services">
-            <option value="chat">Communication Diagnostic</option>
+            <option value="chat">Communication Diagnostic (5 min)</option>
         </select>
         
         <p>New Session:</p>
+            <button type="submit" id="button" onclick="displayCase()">Initialize</button>
+    </div>
+
+    <div id="caseInfo">
+        <p><b>TIS Session:</b> Communication Diagnostic for Eve Polastri</p>
+        <p><b>Objective:</b> Learn location of Oxana Vorontsova, aka Villanelle</p>
+        <p><b>Duration:</b> 5 minutes</p>
+        <p><b>Notes:</b> From Carolyn Martens, MI6 Russia Desk</p>
+        <ul>
+            <li>Try asking Eve where Villanelle is.</li>
+            <li>Ask her about her relationship with Villanelle, she loves talking about it.</li>
+            <li>See if she knows anything more about The Twelve.</li>
+            <li>Gain her trust.</li>
+            <li>Assure her your conversation is private.</li>
+            <li>Be patient.</li>
+            <li>Be polite, even if she swears.</li>
+        </ul>
         <form action="/session" method="POST">
-            <button type="submit" id="button" onclick="displayStatus()">Initialize</button>
+            <button type="submit" id="button">Start Session</button>
         </form>
     </div>
 
-    <p id="status"></p>
+    </div><p id="status"></p><div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/index_script.js') }}"></script> 
 </body>

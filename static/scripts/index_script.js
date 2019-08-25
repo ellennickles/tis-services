@@ -1,5 +1,11 @@
-function displayStatus() {
+
+function displayCase() {
     document.getElementById("startScreen").style.display = "none";
+    document.getElementById("caseInfo").style.display = "block";
+};
+
+function displayStatus() {
+    document.getElementById("caseInfo").style.display = "none";
     document.getElementById("status").innerHTML =
-        "Initializing TIS: Communication Diagnostic Session for Eve Polastri..."
-}
+        "Starting TIS Session: Communication Diagnostic for Eve Polastri..."
+};

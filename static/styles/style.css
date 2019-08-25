@@ -17,3 +17,8 @@
   width: 600px; 
   margin-top: 5px;
 }
+
+
+#caseInfo {
+  display: none;
+}
