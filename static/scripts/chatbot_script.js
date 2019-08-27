@@ -6,16 +6,17 @@
 
 // 240000 is 4 min
 // 210000 is 3.5 min
+// 135000 is 2.25 min
 // 120000 is 2 min
 // 60000 is 1 min
 // 30000 is 30 sec
 // 10000 is 10 sec
 
 var sessionStatus;
-let sessionDuration = 60 * 5; // seconds * 5
+let sessionDuration = 225; // 3 min 45 secs aka pop song-length
 
 var nlpStatus;
-var nlpDuration = 210000; // duration for querying nlp model
+var nlpDuration = 135000; // duration for querying nlp model
 
 var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
 
@@ -27,12 +28,13 @@ var finale = [
     "I have been hiding something from you. It might give you some clues about where she is.",
     "After she killed Peel and I killed Raymond, out of self-defense, of course, she led me through some crazy underground tunnels, that’s where she told me about the plan, an extremely elaborate plan about faking my death.",
     " It involves drawing my blood and taking pictures of a carefully staged scene. She was not supposed to shoot me for real.",
-    "I was at my best so I didn’t take in everything she said. But I do remember she mentioned a secret flat in London, where she hid her escape kit. We were supposed to go there after faking my death. She didn't give out the address but she described the neighborhood as “not stylish.” She also said we could “grab a burger closeby at a greasy restaurant in the car park.", 
+    "I wasn't at my best so I didn’t take in everything she said. But I do remember she mentioned a secret flat in London, where she hid her escape kit. We were supposed to go there after faking my death. She didn't give out the address but she described the neighborhood as “not stylish.” She also said we could “grab a burger closeby at a greasy restaurant in the car park.", 
     "That should give you enough information to start looking for her. My mind is starting to fade, use my information carefully, and do not trust Carolyn."]
 
 var encore = [
     "It's not clear to me at the moment", 
-    "Can do we this another time?", 
+    "I feel dizzy", 
+    "Can we chat another time?", 
     "My head is starting to throb"]
 
 
