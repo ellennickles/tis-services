@@ -11,12 +11,34 @@
     <title>TIS Services</title>
 </head>
 
-<body onload="startSession()">
-    <div>Remaining time: <span id="timer">--:--</span></div>
+<body>
+<!-- <body onload="startSession()"> -->
+    <div class="box" id="session_left">
+        <div id="caseInfo">
+            <p><b>TIS Session:</b> Communication Diagnostic</p>
+            <p><b>Case:</b> Eve Polastri</p>
+            <p><b>Occupation:</b> Former MI6 Agent</p>
+            <p><b>Condition:</b> Coma due to gunshot wounds</p>
+            <p><b>Location:</b> MI6 Medical Facility (Undisclosed), London</p>
+            <p><b>Guidelines for Agent 0512:</b></p>
+            <ul>
+                <li>Inform Eve of her current condition</li>
+                <li>Gain her trust, assure her your conversation is private</li>
+                <li>Ask her what she knows about The Twelve</li>
+                <li>Find out what she knows regarding Villanelle’s whereabouts</li>
+                <li>Her mind may wander outside of your conversation, please be patient with her</li>
+            </ul>
+            <button type="submit" id="startButton" onclick="startSession()">Start Session</button>
+        </div>
+    </div>
 
-    <div id="log"></div>
+    <div class="box" id="session_right">    
+        <div>Remaining time: <span id="timer">--:--</span></div>
 
-    <input type="text" id="typehere" placeholder="type here">
+        <div id="log"></div>
+
+        <input type="text" id="typehere" placeholder="type here">
+    </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/chatbot_script.js') }}"></script>
 </body>

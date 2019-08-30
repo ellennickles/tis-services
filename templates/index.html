@@ -14,77 +14,59 @@ https://github.com/aparrish/semanticsimilaritychatbot/ -->
 </head>
 
 <body>
-    <div id="memo1">
-        <p><b>CONFIDENTIAL</b></p>
-        <p><b>DATE:</b></p>
-        <p><b>SUBJECT:</b> MESSAGE FROM CAROLYN MARTENS</p>
-        <p>Agent 0512:</p>
-        <p>Welcome aboard. I was told of your unique style in interrogation and your gentle manner in communication, making you perfect for this side mission of ours.</p> 
-        <p>As you know, the tech department is putting the TIS to test, and we happen to have an important asset in a coma.</p>
-        <p>We want you to talk to her, test out the technology, and hopefully find out a few things for us.<p> 
-        <p>Details will be sent to you in a separate document.</p>
-        <button type="submit" id="button" onclick="display_memo2()">Next</button>
-    </div>
+    <div class="box">
+        <div id="memo1">
+            <p><b>CONFIDENTIAL</b></p>
+            <p><b>SUBJECT:</b> MESSAGE FROM CAROLYN MARTENS</p>
+            <p>Agent 0512:</p>
+            <p>Welcome aboard. I was told of your unique style in interrogation and your gentle manner in communication, making you perfect for this side mission of ours.</p> 
+            <p>As you know, the tech department is putting the TIS to test, and we happen to have an important asset in a coma.</p>
+            <p>We want you to talk to her, test out the technology, and hopefully find out a few things for us.<p> 
+            <p>Details will be sent to you in a separate document.</p>
+            <button type="submit" id="button" onclick="display_memo2()">Next</button>
+        </div>
 
-    <div id="memo2">
-        <p><b>CONFIDENTIAL</b></p>
-        <p><b>DATE:</b></p>
-        <p><b>SUBJECT:</b> THE THOUGHT IDENTIFICATION SYSTEM (TIS)</p>
-        <p>Agent 0512:</p>
-        <p>The Thought Identification System, or TIS, is an MI6-developed technology that connects brain waves to a text-based digital platform.</p>
-        <p>Theoretically, it can be used to communicate with any patient in a coma. As of this month, more than 10 user testing sessions have been scheduled. In accordance with MHRA compliance, TIS sessions may not exceed 4 minutes.</p>
-        <p>Agents will be sent to a private URL where they can talk to test subjects through a chat platform.</p>
-        <button type="submit" id="button" onclick="display_memo3()">Next</button>
-    </div>
-    
-    <div id="memo3">
-        <p><b>CONFIDENTIAL</b></p>
-        <p><b>DATE:</b></p>
-        <p><b>SUBJECT:</b> MEMORANDUM TIS TEST FOR EVE POLASTRI</p>
-        <p>Agent 0512:</p>
-        <p>Eve Polastri, an MI6 agent, was shot in Rome during a mission. She was found and transferred to an MI6 medical facility in London, and is now in a coma.</p>
-        <p>The suspect, international assassin, Oksana Astankova, code name Villianelle, is on the loose.</p>
-        <p>We also suspect that Agent Polastri has developed an unhealthy obsession for the suspect and is no longer fit to work with MI6.</p>
-        <button type="submit" id="button" onclick="display_TIS_startScreen()">Next</button>
-    </div>
-    
-    <div id="TIS_startScreen">
-        <p>Thought Identification System (TIS)</p>
-
-        <p>Select Case:</p>
-        <select name="cases">
-            <option value="eve">Eve Polastri</option>
-        </select>
-
-        <p>Select Service:</p>
-        <select name="services">
-            <option value="chat">Communication Diagnostic (5 min)</option>
-        </select>
+        <div id="memo2">
+            <p><b>CONFIDENTIAL</b></p>
+            <p><b>SUBJECT:</b> THE THOUGHT IDENTIFICATION SYSTEM (TIS)</p>
+            <p>Agent 0512:</p>
+            <p>The Thought Identification System, or TIS, is an MI6-developed technology that connects brain waves to a text-based digital platform.</p>
+            <p>Theoretically, it can be used to communicate with any patient in a coma. As of this month, more than 10 user testing sessions have been scheduled. In accordance with MHRA compliance, TIS sessions may not exceed 4 minutes.</p>
+            <p>Agents will be sent to a private URL where they can talk to test subjects through a chat platform.</p>
+            <button type="submit" id="button" onclick="display_memo3()">Next</button>
+        </div>
         
-        <p>New Session:</p>
-            <button type="submit" id="button" onclick="display_caseInfo()">Initialize</button>
-    </div>
+        <div id="memo3">
+            <p><b>CONFIDENTIAL</b></p>
+            <p><b>SUBJECT:</b> MEMORANDUM TIS TEST FOR EVE POLASTRI</p>
+            <p>Agent 0512:</p>
+            <p>Eve Polastri, an MI6 agent, was shot in Rome during a mission. She was found and transferred to an MI6 medical facility in London, and is now in a coma.</p>
+            <p>The suspect, international assassin, Oksana Astankova, code name Villianelle, is on the loose.</p>
+            <p>We also suspect that Agent Polastri has developed an unhealthy obsession for the suspect and is no longer fit to work with MI6.</p>
+            <button type="submit" id="button" onclick="display_TIS_startScreen()">Next</button>
+        </div>
+        
+        <div id="TIS_startScreen">
+            <p>Thought Identification System (TIS)</p>
 
-    <div id="caseInfo">
-        <p><b>TIS Session:</b> Communication Diagnostic for Eve Polastri</p>
-        <p><b>Objective:</b> Learn location of Oksana Astankova, aka Villanelle</p>
-        <p><b>Duration:</b> 5 minutes</p>
-        <p><b>Notes:</b> From Carolyn Martens, MI6 Russia Desk</p>
-        <ul>
-            <li>Try asking Eve where Villanelle is.</li>
-            <li>Ask her about her relationship with Villanelle, she loves talking about it.</li>
-            <li>See if she knows anything more about The Twelve.</li>
-            <li>Gain her trust.</li>
-            <li>Assure her your conversation is private.</li>
-            <li>Be patient.</li>
-            <li>Be polite, even if she swears.</li>
-        </ul>
-        <form action="/session" method="POST">
-            <button type="submit" id="button">Start Session</button>
-        </form>
-    </div>
+            <p>Select Case:</p>
+            <select name="cases">
+                <option value="eve">Eve Polastri</option>
+            </select>
 
-    </div><p id="startingTIS"></p><div>
+            <p>Select Service:</p>
+            <select name="services">
+                <option value="chat">Communication Diagnostic</option>
+            </select>
+            
+            <p>New Session:</p>
+                <form action="/session" method="POST">
+                    <button type="submit" class="button">Initialize</button>
+                </form>
+        </div>
+
+        </div><p id="initializingTIS"></p><div>
+    </div>
 
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/index_script.js') }}"></script> 
 </body>

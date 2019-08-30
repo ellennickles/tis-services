@@ -13,35 +13,42 @@
 // 10000 is 10 sec
 
 var sessionStatus;
-let sessionDuration = 225; // 3 min 45 secs aka pop song-length
+// var sessionDuration = 225; // 3 min 45 secs aka pop song length
+var sessionDuration = 135; // 2 min 15 sec for 083019 demo
 
 var nlpStatus;
-var nlpDuration = 135000; // duration for querying nlp model
+// var nlpDuration = 135000; // duration for querying nlp model
+var nlpDuration = 70000; // duration for querying nlp model
 
-var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
+// var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
+var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000;
 
 var finaleIndex = 0;
 // var finale =["0", "1", "2"];
 var finale = [
-    "Ok, Agent Newbie. I think I can trust you. My thoughts may not be entirely clear but my intuition is sharp as always.", 
-    "You’re a good person, I trust you’ll make the right decision.",
+    "Ok, Agent Newbie. You seem like a good person. I think I can trust you. My thoughts may not be entirely clear but my intuition is sharp as always.", 
     "I have been hiding something from you. It might give you some clues about where she is.",
-    "After she killed Peel and I killed Raymond, out of self-defense, of course, she led me through some crazy underground tunnels, that’s where she told me about the plan, an extremely elaborate plan about faking my death.",
-    " It involves drawing my blood and taking pictures of a carefully staged scene. She was not supposed to shoot me for real.",
-    "I wasn't at my best so I didn’t take in everything she said. But I do remember she mentioned a secret flat in London, where she hid her escape kit. We were supposed to go there after faking my death. She didn't give out the address but she described the neighborhood as “not stylish.” She also said we could “grab a burger closeby at a greasy restaurant in the car park.", 
+    "After she killed Peel and I killed Raymond, out of self-defense, of course, she told me an extremely elaborate plan about faking my death. She was not supposed to shoot me for real.",
+    "I wasn't at my best so I didn’t take in everything she said. But I do remember she mentioned a secret flat in London where we were supposed to go afterwards.", 
+    "She didn't give the address but she described the neighborhood as “not stylish.” She also said we could grab a burger closeby at a greasy restaurant in the car park.", 
     "That should give you enough information to start looking for her. My mind is starting to fade, use my information carefully, and do not trust Carolyn."]
 
+var encoreIndex = 0;
 var encore = [
-    "It's not clear to me at the moment", 
     "I feel dizzy", 
     "Can we chat another time?", 
-    "My head is starting to throb"]
+    "My head is starting to throb",
+    "Please stop",
+    "Stop!"]
 
-
+// displays the session_right div
 // sets sessionStatus and nlpStatus booleans to true
 // retrieves current date and time to print to log
 // starts timers
 function startSession() {
+    document.getElementById("startButton").style.display = "none";
+    document.getElementById("session_right").style.display = "block";
+    
     sessionStatus = true;
     nlpStatus = true;
 
@@ -76,7 +83,7 @@ function startTimer(duration, timerDisplay) {
             endSession();
         }
     }, 1000);
-}
+};
 
 // receives guest input
 // clears guest input field
@@ -106,7 +113,7 @@ async function print_nlpResp(val) {
     setTimeout(() => {
         updateLog(nlpResp)
     }, respTime);
-}
+};
 
 // queries the chatbot model for a response to guest input 
 async function get_nlpResp(val) {
@@ -120,20 +127,25 @@ async function get_nlpResp(val) {
 function print_finaleResp() {
     if (finaleIndex < finale.length && sessionStatus) {
         setTimeout(() => {
-            updateLog(finale[finaleIndex])
+            updateLog(finale[finaleIndex]);
             finaleIndex++;
         }, respTime); 
     }
 
     if (finaleIndex === finale.length && sessionStatus) {
         setTimeout(() => {
-            console.log("scripted session expired")
+            // random responses
             // from: https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
-            var random = encore[Math.floor(Math.random() * encore.length)];
-            updateLog(random);
+            // var random = encore[Math.floor(Math.random() * encore.length)];
+            // updateLog(random);
+            
+            updateLog(encore[encoreIndex]);
+            encoreIndex++;
+            // tidy this up if we like this ending
+
         }, respTime);   
     };
-}
+};
 
 // prints to log div
 function updateLog(str) {
@@ -168,8 +180,9 @@ function endSession() {
     sessionStatus = false;
 
     let expired = "Session Expired"
-    document.body.appendChild(paraWithText(expired));
-}
+
+    document.getElementById("session_right").appendChild(paraWithText(expired));  
+};
 
 // returns the current date and time
 function getStats() {

@@ -1,3 +1,9 @@
+.box {
+  float: left;
+  width: 500px;
+  margin: 20px;
+}
+
 /* index.html */
 #memo1 {
   display: block;
@@ -15,15 +21,14 @@
   display: none;
 }
 
-#caseInfo {
+
+/* chatbot.html */
+#session_right {
   display: none;
 }
 
-
-/* chatbot.html */
 #log {
-    /* box-sizing: border-box; */
-    width: 600px;
+    width: 500px;
     height: 32em;
     border: 1px grey solid;
     padding: 2px;
@@ -36,8 +41,7 @@
 }
 
 #typehere {
-  /* box-sizing: border-box;  */
-  width: 600px; 
+  width: 500px; 
   margin-top: 5px;
 }
 

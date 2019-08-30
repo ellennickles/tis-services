@@ -13,13 +13,8 @@ function display_TIS_startScreen() {
     document.getElementById("TIS_startScreen").style.display = "block";
 };
 
-function display_caseInfo() {
-    document.getElementById("TIS_startScreen").style.display = "none";
-    document.getElementById("caseInfo").style.display = "block";
-};
-
 function displayStatus() {
-    document.getElementById("caseInfo").style.display = "none";
-    document.getElementById("startingTIS").innerHTML =
-        "Starting TIS Session: Communication Diagnostic for Eve Polastri..."
+    document.getElementById("TIS_startScreen").style.display = "none";
+    document.getElementById("initializingTIS").innerHTML =
+        "Initializing TIS Session: Communication Diagnostic for Eve Polastri..."
 };
