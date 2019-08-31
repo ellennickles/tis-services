@@ -1,8 +1,12 @@
-// there is an overall session time limit
+// To do: 
+// Redo display timer to match session begin display in chat log area
+// Tidy up printing of encore responses --> add them to finale!
+
+// there is an overall TIS session time limit
 // we also set a time limit for querying the nlp chatbot
-// when the nlp timer finishes, ordered responses start printing
-// when those are finished, random "I'm tired" responses start printing
-// ...until the overall session timer ends
+// when the nlp timer finishes, ordered scripted finale responses print
+// when those are finished, scripted encore responses print
+// ...until the overall TIS session timer ends
 
 // 240000 is 4 min
 // 210000 is 3.5 min
@@ -18,13 +22,12 @@ var sessionDuration = 135; // 2 min 15 sec for 083019 demo
 
 var nlpStatus;
 // var nlpDuration = 135000; // duration for querying nlp model
-var nlpDuration = 70000; // duration for querying nlp model
+var nlpDuration = 70000; // duration for querying nlp model for 083019 demo
 
-// var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
-var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000;
+// var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000; // original
+var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000; // 083019 demo
 
 var finaleIndex = 0;
-// var finale =["0", "1", "2"];
 var finale = [
     "Ok, Agent Newbie. You seem like a good person. I think I can trust you. My thoughts may not be entirely clear but my intuition is sharp as always.", 
     "I have been hiding something from you. It might give you some clues about where she is.",
@@ -44,7 +47,7 @@ var encore = [
 // displays the session_right div
 // sets sessionStatus and nlpStatus booleans to true
 // retrieves current date and time to print to log
-// starts timers
+// starts timers: display countdown timer and overall TIS session timer
 function startSession() {
     document.getElementById("startButton").style.display = "none";
     document.getElementById("session_right").style.display = "block";
@@ -134,15 +137,11 @@ function print_finaleResp() {
 
     if (finaleIndex === finale.length && sessionStatus) {
         setTimeout(() => {
-            // random responses
-            // from: https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
-            // var random = encore[Math.floor(Math.random() * encore.length)];
-            // updateLog(random);
             
+            // tidy this up if we like this ending
             updateLog(encore[encoreIndex]);
             encoreIndex++;
-            // tidy this up if we like this ending
-
+            
         }, respTime);   
     };
 };
