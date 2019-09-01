@@ -27,6 +27,10 @@
   display: none;
 }
 
+#timer {
+  display: none;
+}
+
 #log {
     width: 500px;
     height: 32em;
