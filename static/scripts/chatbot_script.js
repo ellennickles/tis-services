@@ -1,9 +1,8 @@
 // To do: 
 // display sessio right div, start session timer, display countdown timer, print session start
-// create a promise chain?
 
 // there is an overall TIS session time limit
-// we also set a time limit for querying the nlp chatbot
+// we also set a time limit for querying the nlp chatbot model
 // when the nlp timer finishes, ordered scripted finale responses print
 // ...until the overall TIS session timer ends
 
@@ -44,43 +43,28 @@ var finale = [
     "I can't think",
     "Hmm"];
 
+function startSession() {
+    displayChatBox();
+    startSessionTimer();
+    startCountdownTimer();
+};
 
 // displays the session_right div
-function startSession() {
+function displayChatBox(){
     document.getElementById("startButton").style.display = "none";
     document.getElementById("session_right").style.display = "block";
-
-    startSessionTimer();
-};
+}
 
 // start session timer
 function startSessionTimer() {
     setTimeout(() => {
         nlpStatus = false;
     }, nlpDuration);
-
-    displayCountdown();
-};
-
-// display countdown timer
-function displayCountdown() {
-    timerDisplay = document.getElementById("timer");
-    timerDisplay.style.display = "inline";
-    startCountdownTimer(sessionDuration, timerDisplay);
-
-    printSessionStart();
-};
-
-// retrieves current date and time to print to log
-function printSessionStart() {
-    let start = getStats();
-    let startStr = "*** Session Begin " + start + " ***";
-    updateLog(startStr);
 };
 
 // timer from: https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
-function startCountdownTimer(duration, timerDisplay) {
-    var time = duration, minutes, seconds;
+function startCountdownTimer() {
+    var time = sessionDuration, minutes, seconds;
 
     var theTimer = setInterval(() => {
         minutes = parseInt(time / 60, 10);
@@ -89,7 +73,12 @@ function startCountdownTimer(duration, timerDisplay) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
+        let timerDisplay = document.getElementById("timer");
         timerDisplay.textContent = minutes + ":" + seconds;
+
+        if (seconds == sessionDuration) {
+            displaySessionStart();
+        }
 
         if (--time < 0) {
             time = 0;
@@ -97,6 +86,13 @@ function startCountdownTimer(duration, timerDisplay) {
             endSession();
         }
     }, 1000);
+};
+
+// retrieves current date and time to print to log
+function displaySessionStart() {
+    let start = getStats();
+    let startStr = "*** Session Begin " + start + " ***";
+    updateLog(startStr);
 };
 
 // receives guest input
@@ -129,7 +125,7 @@ async function print_nlpResp(val) {
     }, respTime);
 };
 
-// queries the chatbot nlp model for a response to guest input 
+// queries the chatbot nlp model for a response to guest's input 
 async function get_nlpResp(val) {
     let got_nlpResp = await fetch("/response.json?sentence=" +
         encodeURIComponent(val));
@@ -137,6 +133,7 @@ async function get_nlpResp(val) {
     return data["result"];
 };
 
+// if nlpStatus is false,
 // prints scripted resonses to log div
 function print_finaleResp() {
     if (finaleIndex < finale.length && sessionStatus) {
