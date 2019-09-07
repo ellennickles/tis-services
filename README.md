@@ -15,13 +15,7 @@ Here's some useful information to run this project on your computers. Let's brea
 ## Part 1: Gather / generate the data
 We need a corpus of conversational turns to use Allison's [Semantic Similarity Chatbot](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581). 
 
-1. Create a spreadsheet with four columns (no headers)--the code in `tis_setup.py` relies on this structure:
-   1. row number
-   2. data source
-   3. speaker's name
-   4. speaker's line
-
-In our project, the Killing Eve character Eve Polastri always responds on an even-numbered row. When the project is running the chatbot works, Allison writes, "as a kind of search engine. When you type something into the chat, the chatbot searches its database for the most appropriate [in our case, 'Eve'] response."
+1. Create a spreadsheet with four columns (no headers)--the code in `tis_setup.py` relies on this structure: row number, data source, speaker's name, and speaker's line. In our project, the Killing Eve character Eve Polastri always responds on an even-numbered row. When the project is running the chatbot works, Allison writes, "as a kind of search engine. When you type something into the chat, the chatbot searches its database for the most appropriate [in our case, 'Eve'] response."
 
 2. Note the total number of lines for the document and divide it by 2 to retrieve the amount of conversational turns in our corpus. E.g. If the total number is 2,860, then we have 1,430 conversational turns. In Part 3, we will update `tis_setup.py` with the number of turns.
 
