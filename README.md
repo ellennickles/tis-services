@@ -54,7 +54,7 @@ Before any chitchat, set up the bot database and test it with these steps:
 
 
 ## Part 4: Run the project
-
+Type `python server.py`in your terminal window, and visit `http://localhost:5000/` in your browser window to start the experience.
 
 ## Extra!
 What about those files, `chatbot.ini` and `wsgi.py`, you ask? At one point this project was (still is?) deployed on a Digital Ocean droplet, and those files are for that specific environment. Here are the tutorials we used, although it's the future now so no guarantee these links still work:
