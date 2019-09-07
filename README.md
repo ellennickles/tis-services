@@ -15,7 +15,7 @@ Here's some useful information to run this project on your computers. Let's brea
 ## Part 1: Gather / generate the data
 We need a corpus of conversational turns for Allison's [Semantic Similarity Chatbot](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581). 
 
-For our project we created a spreadsheet with four columns (no headers), and the code in `tis-setup.py` relies on this structure:
+Create a spreadsheet with four columns (no headers)--the code in `tis_setup.py` relies on this structure:
    1. row number
    2. data source
    3. speaker's name
@@ -23,9 +23,9 @@ For our project we created a spreadsheet with four columns (no headers), and the
 
 In our project, the Killing Eve character Eve Polastri always responds on an even-numbered row. When the project is running the chatbot works, Allison writes, "as a kind of search engine. When you type something into the chat, the chatbot searches its database for the most appropriate [in our case, 'Eve'] response."
 
-Note the total number of lines for the document and divide it by 2 to retrieve the amount of conversational turns in our corpus. E.g. If the total number is 2,860, then we have 1,430 conversational turns. In Part 3, we will update `tis-setup.py` with the number of turns.
+Note the total number of lines for the document and divide it by 2 to retrieve the amount of conversational turns in our corpus. E.g. If the total number is 2,860, then we have 1,430 conversational turns. In Part 3, we will update `tis_setup.py` with the number of turns.
 
-Export the completed spreadsheet as a tab-separated values file named `lines.tsv`. We can call this file whatever we want. Just be sure to update the filename in `tis-setup.py`.
+Export the completed spreadsheet as a tab-separated values file named `lines.tsv`. We can call this file whatever we want. Just be sure to update the filename in `tis_setup.py`.
 
 (Our data file is not stored in this repository.)
 
@@ -43,9 +43,14 @@ Export the completed spreadsheet as a tab-separated values file named `lines.tsv
    pip install simpleneighbors
    pip install https://github.com/aparrish/semanticsimilaritychatbot/archive/master.zip
 ```
-6. Create two directories: `mkdir data` and `mkdir chatbot` 
+6. Create two directories: `mkdir data` and `mkdir chatbotdb` 
 
 ## Part 3: Create and test the chatbot database
+Before any chitchat, set up the bot database and test it with these steps:
+1. Move the data file, `lines.tsv`, into the `data` directory.
+2. Open `tis-setup.py` and update the number of conversational turns, a variable aptly named, `numTurns`, with the amount you retrieved in Part 1. Make sure to save the file after this change!
+3. Execute the file with `python tis_setup.py`. This will create and save the chatbot database into the directory `chatbotdb`. There is some code in this file to test that the chatbot is working properly, but it is commented out. It's much more fun to test the chatbot with `tis_test.py`.
+4. So let's take it for whirl! Run `python tis_test.py`, and converse with the chatbot through your terminal window. Simply type `end session` when you're satisfied that the responses are indeed the ones you bundled together in Part 1.
 
 
 ## Part 4: Run the project
