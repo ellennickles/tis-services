@@ -1,6 +1,3 @@
-// To do: 
-// display sessio right div, start session timer, display countdown timer, print session start
-
 // there is an overall TIS session time limit
 // we also set a time limit for querying the nlp chatbot model
 // when the nlp timer finishes, ordered scripted finale responses print
@@ -185,7 +182,6 @@ function endSession() {
     let expired = "Session Expired"
     document.getElementById("session_right").appendChild(paraWithText(expired));
 };
-
 
 // returns the current date and time
 function getStats() {
