@@ -27,6 +27,8 @@ Note the total number of lines for the document and divide it by 2 to retrieve t
 
 Export the completed spreadsheet as a tab-separated values file named `lines.tsv`. We can call this file whatever we want. Just be sure to update the filename in `tis-setup.py`.
 
+(Our data file is not stored in this repository.)
+
 ## Part 2: Set up the project environment
 1. Clone this repository onto your machine.
 2. In your terminal window, `cd` into the newly-cloned directory `tis-services`.
