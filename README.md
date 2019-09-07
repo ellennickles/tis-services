@@ -4,7 +4,7 @@ description tba
 
 A project by [Carrie Sijia Wang](https://carriesijiawang.com/) and [Ellen Nickles](https://ellennickles.site/)
 
-With guidance and [code references](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) from [Allison Parrish](https://www.decontextualize.com)
+With guidance and [code](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) from [Allison Parrish](https://www.decontextualize.com)
 
 ---
 
@@ -13,7 +13,7 @@ Dear Future Carries and Ellens,
 Here's some useful information to run this project on your computers. Let's break it into several parts. 
 
 ## Part 1: Gather / generate the data
-We need a corpus of conversational turns for Allison's [Semantic Similarity Chatbot](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581). 
+We need a corpus of conversational turns to use Allison's [Semantic Similarity Chatbot](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581). 
 
 Create a spreadsheet with four columns (no headers)--the code in `tis_setup.py` relies on this structure:
    1. row number
