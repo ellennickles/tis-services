@@ -15,13 +15,13 @@ var sessionStatus = true;
 // const sessionDuration = 225; // 3 min 45 secs aka pop song length
 // const sessionDuration = 135; // 2 min 15 sec for 083019 demo
 
-const sessionDuration = 45; // 2 min 15 sec for 083019 demo
+const sessionDuration = 45; // testing
 
 var nlpStatus = true;
 // const nlpDuration = 135000; // duration for querying nlp model
 // const nlpDuration = 70000; // duration for querying nlp model for 083019 demo
 
-const nlpDuration = 1000; // duration for querying nlp model for 083019 demo
+const nlpDuration = 1000; // testing
 
 // var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000; // original
 var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000; // 083019 demo
