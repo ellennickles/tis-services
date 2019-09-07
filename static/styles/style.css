@@ -1,0 +1,47 @@
+.box {
+  float: left;
+  width: 500px;
+  margin: 20px;
+}
+
+/* index.html */
+#memo1 {
+  display: block;
+}
+
+#memo2 {
+  display: none;
+}
+
+#memo3 {
+  display: none;
+}
+
+#TIS_startScreen {
+  display: none;
+}
+
+
+/* chatbot.html */
+#session_right {
+  display: none;
+}
+
+#log {
+    width: 500px;
+    height: 32em;
+    border: 1px grey solid;
+    padding: 2px;
+    overflow: scroll;
+}
+
+#log p {
+    margin: 5px;
+    font-family: sans-serif;
+}
+
+#typehere {
+  width: 500px; 
+  margin-top: 5px;
+}
+

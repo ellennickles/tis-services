@@ -1,4 +1,5 @@
 <!-- Reference: https://colab.research.google.com/drive/1XlmtcyMdPRQC6bw2HQYb3UPtVGKqUJ0a#scrollTo=M1wElvooTBjp -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,104 +7,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
     <title>TIS Services</title>
-    <style type="text/css">
-        #log p {
-            margin: 5px;
-            font-family: sans-serif;
-        }
-    </style>
 </head>
 
-<body onload="startSession()">
-    <div id="log" style="box-sizing: border-box;
-            width: 600px;
-            height: 32em;
-            border: 1px grey solid;
-            padding: 2px;
-            overflow: scroll;">
+<body>
+<!-- <body onload="startSession()"> -->
+    <div class="box" id="session_left">
+        <div id="caseInfo">
+            <p><b>TIS Session:</b> Communication Diagnostic</p>
+            <p><b>Case:</b> Eve Polastri</p>
+            <p><b>Occupation:</b> Former MI6 Agent</p>
+            <p><b>Condition:</b> Coma due to gunshot wounds</p>
+            <p><b>Location:</b> MI6 Medical Facility (Undisclosed), London</p>
+            <p><b>Guidelines for Agent 0512:</b></p>
+            <ul>
+                <li>Inform Eve of her current condition</li>
+                <li>Gain her trust, assure her your conversation is private</li>
+                <li>Ask her what she knows about The Twelve</li>
+                <li>Find out what she knows regarding Villanelle’s whereabouts</li>
+                <li>Her mind may wander outside of your conversation, please be patient with her</li>
+            </ul>
+            <button type="submit" id="startButton" onclick="startSession()">Start Session</button>
+        </div>
     </div>
 
-    <input type="text" id="typehere" placeholder="type here"
-        style="box-sizing: border-box; width: 600px; margin-top: 5px;">
+    <div class="box" id="session_right">    
+        <div>Remaining time: <span id="timer"></span></div>
 
-    <script type="text/javascript">
-        var sessionDuration = 120000;
-        var session = true;
+        <div id="log"></div>
 
-        function paraWithText(t) {
-            let tn = document.createTextNode(t);
-            let ptag = document.createElement("p");
-            ptag.appendChild(tn);
-            return ptag;
-        }
+        <input type="text" id="typehere" placeholder="type here">
+    </div>
 
-        function updateLog(str) {
-            if (session) {
-                let objDiv = document.getElementById("log");
-                objDiv.appendChild(paraWithText(str));
-                objDiv.scrollTop = objDiv.scrollHeight;
-            } else {
-                return;
-            }
-        }
-
-        document.querySelector("#typehere").onchange = async function () {
-            let inputField = document.querySelector("#typehere");
-            let val = inputField.value;
-            inputField.value = "";
-            let resp = await getResp(val);
-            updateLog("> " + val)
-            let respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000;
-            setTimeout(() => {
-                updateLog(resp)
-            }, respTime);
-        };
-
-        async function getResp(val) {
-            let getResp = await fetch("/response.json?sentence=" +
-                encodeURIComponent(val));
-            let data = await getResp.json();
-            return data["result"];
-        };
-
-        function startSession() {
-            let start = getStats();
-            let startStr = "*** Session Begin " + start + " ***";
-            updateLog(startStr);
-
-            setTimeout(() => {
-                endSession()
-            }, sessionDuration);
-        };
-
-        function endSession() {
-            document.getElementById("typehere").style.display = "none";
-
-            let end = getStats();
-            let endStr = "*** Session End " + end + " ***";
-            updateLog(endStr);
-
-            session = false;
-
-            let expired = "Session Expired"
-            document.body.appendChild(paraWithText(expired));
-
-            let a = document.createElement("a");
-            let linkText = document.createTextNode(
-                "Complete TIS Communication Diagnostic Form");
-            a.appendChild(linkText);
-            a.href = "https://docs.google.com/forms/d/e/1FAIpQLScAxWcb14R_iNtDO4DIzK1Lce2q1ow3k6gAdbZpZwIv0eLChg/viewform";
-            a.target = "_blank";
-            document.body.appendChild(a);
-        };
-
-        function getStats() {
-            let timestamp = new Date(Date.now());
-            let dateTime = timestamp.toDateString() + " " + timestamp.toLocaleTimeString()
-            return dateTime;
-        };
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/chatbot_script.js') }}"></script>
 </body>
 
 </html>
