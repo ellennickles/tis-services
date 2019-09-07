@@ -4,7 +4,7 @@ description tba
 
 A project by [Carrie Sijia Wang](https://carriesijiawang.com/) and [Ellen Nickles](https://ellennickles.site/)
 
-With guidance and [code](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) from [Allison Parrish](https://www.decontextualize.com)
+With guidance and [code references](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) from [Allison Parrish](https://www.decontextualize.com)
 
 ---
 
