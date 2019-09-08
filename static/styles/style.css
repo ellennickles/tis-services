@@ -1,10 +1,62 @@
-.box {
-  float: left;
-  width: 500px;
-  margin: 20px;
+@font-face {
+  font-family: 'Roboto';
+  src: url('RobotoCondensed-Light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
 }
 
-/* index.html */
+@font-face {
+  font-family: 'Roboto';
+  src: url('RobotoCondensed-Bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 300;
+  font-size: 18px;
+  color: rgb(240, 240, 240);
+  /* color: rgb(50, 50, 50); */
+  background-color: rgb(50, 50, 50);
+  /* background-color: rgb(240, 240, 240); */
+}
+
+strong {
+  font-weight: 700;
+}
+
+.accent-color {
+  color: rgb(224, 77, 86);
+}
+
+/* --- index.html --- */
+/* --- Header --- */
+.header-item {
+  padding: 30px;
+  font-size: 1.5em;
+  letter-spacing: .25em;
+}
+
+/* --- Content --- */
+.content-item {
+  /* float: left;  when using multiple items */
+  width: 33%;
+  margin: auto;
+}
+
+.container-item-center {
+  height: 700px;
+  border: 1px solid  rgb(240, 240, 240);
+  padding: 30px;
+}
+
 #memo1 {
   display: block;
 }
@@ -21,8 +73,41 @@
   display: none;
 }
 
+.memo-label {
+  font-family: serif;
+  letter-spacing: .05em;
+  margin-bottom: 40px;
+}
 
-/* chatbot.html */
+.memo-header {
+  font-size: 2em;
+  letter-spacing: .05em;
+  margin-bottom: 40px;
+}
+
+.memo-subject {
+  letter-spacing: .05em;
+  margin-bottom: 60px;
+}
+
+.memo-body {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  letter-spacing: .03em;
+  line-height: 1.3em;
+  margin-bottom: 60px;
+}
+
+.button {
+  letter-spacing: .05em;
+  font-size: 1em;
+  color: rgb(224, 77, 86);
+  background-color: rgb(50, 50, 50);
+  border: none;
+  cursor: pointer;
+}
+  
+/* --- chatbot.html --- */
 #session_right {
   display: none;
 }

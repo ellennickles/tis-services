@@ -4,71 +4,109 @@ https://github.com/aparrish/semanticsimilaritychatbot/ -->
 
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>TIS Services</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    </head>
+    <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
-    <title>TIS Services</title>
-</head>
-
-<body>
-    <div class="box">
-        <div id="memo1">
-            <p><b>CONFIDENTIAL</b></p>
-            <p><b>SUBJECT:</b> MESSAGE FROM CAROLYN MARTENS</p>
-            <p>Agent 0512:</p>
-            <p>Welcome aboard. I was told of your unique style in interrogation and your gentle manner in communication, making you perfect for this side mission of ours.</p> 
-            <p>As you know, the tech department is putting the TIS to test, and we happen to have an important asset in a coma.</p>
-            <p>We want you to talk to her, test out the technology, and hopefully find out a few things for us.<p> 
-            <p>Details will be sent to you in a separate document.</p>
-            <button type="submit" id="button" onclick="display_memo2()">Next</button>
+        <div class="header">
+            <div class="header-item">
+                <p><span class="accent-color">T</span>HOUGHT</p>
+                <p><span class="accent-color">I</span>DENTIFICATION</p>
+                <p><span class="accent-color">S</span>YSTEM</p>
+            </div>
         </div>
+ 
+        <div class="content">
 
-        <div id="memo2">
-            <p><b>CONFIDENTIAL</b></p>
-            <p><b>SUBJECT:</b> THE THOUGHT IDENTIFICATION SYSTEM (TIS)</p>
-            <p>Agent 0512:</p>
-            <p>The Thought Identification System, or TIS, is an MI6-developed technology that connects brain waves to a text-based digital platform.</p>
-            <p>Theoretically, it can be used to communicate with any patient in a coma. As of this month, more than 10 user testing sessions have been scheduled. In accordance with MHRA compliance, TIS sessions may not exceed 4 minutes.</p>
-            <p>Agents will be sent to a private URL where they can talk to test subjects through a chat platform.</p>
-            <button type="submit" id="button" onclick="display_memo3()">Next</button>
-        </div>
-        
-        <div id="memo3">
-            <p><b>CONFIDENTIAL</b></p>
-            <p><b>SUBJECT:</b> MEMORANDUM TIS TEST FOR EVE POLASTRI</p>
-            <p>Agent 0512:</p>
-            <p>Eve Polastri, an MI6 agent, was shot in Rome during a mission. She was found and transferred to an MI6 medical facility in London, and is now in a coma.</p>
-            <p>The suspect, international assassin, Oksana Astankova, code name Villianelle, is on the loose.</p>
-            <p>We also suspect that Agent Polastri has developed an unhealthy obsession for the suspect and is no longer fit to work with MI6.</p>
-            <button type="submit" id="button" onclick="display_TIS_startScreen()">Next</button>
-        </div>
-        
-        <div id="TIS_startScreen">
-            <p>Thought Identification System (TIS)</p>
+            <!-- <div class="content-item">
+                <p>Agent 0512</p>
+            </div> -->
 
-            <p>Select Case:</p>
-            <select name="cases">
-                <option value="eve">Eve Polastri</option>
-            </select>
+            <div class="content-item">
+                <div class="container-item-center" id="memo1">
 
-            <p>Select Service:</p>
-            <select name="services">
-                <option value="chat">Communication Diagnostic</option>
-            </select>
+                    <div class="memo-label">- Document 1 -</div>
+
+                    <div class="memo-header"><strong>CONFIDENTIAL</strong></div>
+
+                    <div class="memo-subject">MESSAGE FROM CAROLYN MARTENS</div>
+
+                    <div class="memo-body">
+                        <p>Agent 0512:</p><br>
+
+                        <p>Welcome aboard. I was told of your unique style in interrogation and your gentle manner in communication, making you perfect for this side mission of ours.</p><br>
+
+                        <p>As you know, the tech department is putting the TIS to test, and we happen to have an important asset in a coma.</p><br>
+
+                        <p>We want you to talk to her, test out the technology, and hopefully find out a few things for us.<p><br> 
+
+                        <p>Details will be sent to you in a separate document.</p>
+                    </div>
+                    
+                    <button type="submit" class="button" onclick="display_memo2()">NEXT DOCUMENT >></button>
+                </div>
+            </div>
+
+            <div class="content-item">
+                <div class="container-item-center" id="memo2">
+
+                    <div class="memo-label">- Document 2 -</div>
+
+                    <div class="memo-header"><strong>CONFIDENTIAL</strong></div>
+
+                    <div class="memo-subject">THE THOUGHT IDENTIFICATION SYSTEM (TIS)</div>
+
+                    <div class="memo-body">
+                        <p>Agent 0512:</p><br>
+
+                        <p>The Thought Identification System, or TIS, is an MI6-developed technology that connects brain waves to a text-based digital platform.</p><br>
+
+                        <p>Theoretically, it can be used to communicate with any patient in a coma. As of this month, more than 10 user testing sessions have been scheduled. In accordance with MHRA compliance, TIS sessions may not exceed 4 minutes.</p><br>
+
+                        <p>Agents will be sent to a private URL where they can talk to test subjects through a chat platform.</p>
+                    </div>
+                  
+                    <button type="submit" class="button" onclick="display_memo3()">NEXT DOCUMENT >></button>
+                </div>
+            </div>
+
+            <div class="content-item">
+                <div class="container-item-center" id="memo3">
+
+                    <div class="memo-label">- Document 3 -</div>
+
+                    <div class="memo-header"><strong>CONFIDENTIAL</strong></div>
+                    
+                    <div class="memo-subject">MEMORANDUM TIS TEST FOR EVE POLASTRI</div>
+
+                    <div class="memo-body">
+                        <p>Agent 0512:</p><br>
+
+                        <p>Eve Polastri, an MI6 agent, was shot in Rome during a mission. She was found and transferred to an MI6 medical facility in London, and is now in a coma.</p><br>
+
+                        <p>The suspect, international assassin, Oksana Astankova, code name Villianelle, is on the loose.</p><br>
+
+                        <p>We also suspect that Agent Polastri has developed an unhealthy obsession for the suspect and is no longer fit to work with MI6.</p>
+                    </div>
+                   
+                    <form action="/session" method="POST">
+                        <button type="submit" class="button">INITIALIZE SESSION >></button>
+                    </form>
+                </div>
+            </div>            
+
+            <div><p id="initializingTIS"></p></div> 
+             
+            <!-- <div class="content-item">
+                <p>Next Document</p>
+            </div> -->
             
-            <p>New Session:</p>
-                <form action="/session" method="POST">
-                    <button type="submit" class="button">Initialize</button>
-                </form>
         </div>
 
-        </div><p id="initializingTIS"></p><div>
-    </div>
-
-    <script type="text/javascript" src="{{ url_for('static', filename='scripts/index_script.js') }}"></script> 
-</body>
-
+        <script type="text/javascript" src="{{ url_for('static', filename='scripts/index_script.js') }}"></script> 
+    </body>
 </html>
