@@ -23,9 +23,7 @@ body {
   font-weight: 300;
   font-size: 18px;
   color: rgb(240, 240, 240);
-  /* color: rgb(50, 50, 50); */
   background-color: rgb(50, 50, 50);
-  /* background-color: rgb(240, 240, 240); */
 }
 
 strong {
@@ -36,7 +34,6 @@ strong {
   color: rgb(224, 77, 86);
 }
 
-/* --- index.html --- */
 /* --- Header --- */
 .header-item {
   padding: 30px;
@@ -46,17 +43,32 @@ strong {
 
 /* --- Content --- */
 .content-item {
-  /* float: left;  when using multiple items */
+  float: left;  /* when using multiple items */
   width: 33%;
   margin: auto;
 }
 
-.container-item-center {
+.container-item {
+  height: 700px;
+  padding: 30px;
+}
+
+.container-item-border {
   height: 700px;
   border: 1px solid  rgb(240, 240, 240);
   padding: 30px;
 }
 
+.button {
+  outline: none;
+  font-size: 1em;
+  color: rgb(224, 77, 86);
+  background-color: rgb(50, 50, 50);
+  border: none;
+  cursor: pointer;
+}
+
+/* ///////////// index.html only /////////////  */
 #memo1 {
   display: block;
 }
@@ -98,35 +110,51 @@ strong {
   margin-bottom: 60px;
 }
 
-.button {
+/* ///////////// chatbot.html only ///////////// */
+.caseInfo-label {
   letter-spacing: .05em;
-  font-size: 1em;
-  color: rgb(224, 77, 86);
-  background-color: rgb(50, 50, 50);
-  border: none;
-  cursor: pointer;
+  font-weight: 700;
 }
-  
-/* --- chatbot.html --- */
-#session_right {
+
+.caseInfo-content {
+  letter-spacing: .03em;
+  margin-bottom: 20px;
+}
+
+ul {
+  margin-left: 20px;
+  padding: 0;
+  list-style-position: outside;
+}
+
+#chat_session {
   display: none;
 }
 
 #log {
-    width: 500px;
     height: 32em;
-    border: 1px grey solid;
+    border: 1px solid  rgb(240, 240, 240);
     padding: 2px;
     overflow: scroll;
 }
 
 #log p {
     margin: 5px;
-    font-family: sans-serif;
+    margin-bottom: 10px;
+    font-size: 1em;
+    letter-spacing: .03em;
+    line-height: 1.3em;
 }
 
 #typehere {
-  width: 500px; 
+  outline: none;
+  width: 100%; 
   margin-top: 5px;
+  padding: 5px;
+  background-color: rgb(50, 50, 50);
+  border: 1px solid  rgb(240, 240, 240);
+  font-size: .9em;
+  caret-color: rgb(240, 240, 240);
+  color: rgb(224, 77, 86);
 }
 

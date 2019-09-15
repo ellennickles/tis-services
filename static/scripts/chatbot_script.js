@@ -46,10 +46,10 @@ function startSession() {
     startCountdownTimer();
 };
 
-// displays the session_right div
+// displays the chat_session content
 function displayChatBox(){
     document.getElementById("startButton").style.display = "none";
-    document.getElementById("session_right").style.display = "block";
+    document.getElementById("chat_session").style.display = "block";
 }
 
 // start session timer
@@ -88,7 +88,7 @@ function startCountdownTimer() {
 // retrieves current date and time to print to log
 function displaySessionStart() {
     let start = getStats();
-    let startStr = "*** Session Begin " + start + " ***";
+    let startStr = "******* SESSION BEGIN " + start + " ******* ";
     updateLog(startStr);
 };
 
@@ -102,7 +102,7 @@ document.querySelector("#typehere").onchange = () => {
 
     inputField.value = "";
 
-    updateLog("> " + val)
+    updateLogColor("> " + val);
 
     if (nlpStatus) {
         print_nlpResp(val);
@@ -158,6 +158,18 @@ function updateLog(str) {
     }
 };
 
+// prints to log div with font color
+// refactor this!
+function updateLogColor(str) {
+    if (sessionStatus || nlpStatus) {
+        let objDiv = document.getElementById("log");
+        objDiv.appendChild(paraWithText(str)).style.color = "rgb(224, 77, 86)";
+        objDiv.scrollTop = objDiv.scrollHeight;
+    } else {
+        return;
+    }
+};
+
 // packages the string to print to log div
 function paraWithText(t) {
     let tn = document.createTextNode(t);
@@ -174,13 +186,13 @@ function endSession() {
     document.getElementById("typehere").style.display = "none";
 
     let end = getStats();
-    let endStr = "*** Session End " + end + " ***";
+    let endStr = "*******  SESSION END " + end + " *******";
     updateLog(endStr);
 
     sessionStatus = false;
 
-    let expired = "Session Expired"
-    document.getElementById("session_right").appendChild(paraWithText(expired));
+    let expired = "SESSION EXPIRED"
+    document.getElementById("chat_session").appendChild(paraWithText(expired));
 };
 
 // returns the current date and time

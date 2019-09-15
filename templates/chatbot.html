@@ -18,31 +18,46 @@
             </div>
         </div>
 
-        <div class="box" id="session_left">
-            <div id="caseInfo">
-                <p><b>TIS Session:</b> Communication Diagnostic</p>
-                <p><b>Case:</b> Eve Polastri</p>
-                <p><b>Occupation:</b> Former MI6 Agent</p>
-                <p><b>Condition:</b> Coma due to gunshot wounds</p>
-                <p><b>Location:</b> MI6 Medical Facility (Undisclosed), London</p>
-                <p><b>Guidelines for Agent 0512:</b></p>
-                <ul>
-                    <li>Inform Eve of her current condition</li>
-                    <li>Gain her trust, assure her your conversation is private</li>
-                    <li>Ask her what she knows about The Twelve</li>
-                    <li>Find out what she knows regarding Villanelle’s whereabouts</li>
-                    <li>Her mind may wander outside of your conversation, please be patient with her</li>
-                </ul>
-                <button type="submit" id="startButton" onclick="startSession()">Start Session</button>
+        <div class="content-item">
+            <div class="container-item" id="caseInfo">
+                <div class="caseInfo-label">TIS SESSION</div>
+
+                <div class="caseInfo-content">Communication Diagnostic</div>
+
+                <div class="caseInfo-label">CASE</div>
+                <div class="caseInfo-content">Eve Polastri</div>
+              
+                <div class="caseInfo-label">OCCUPATION</div>
+                <div class="caseInfo-content">Former MI6 Agent</div>
+
+                <div class="caseInfo-label">CONDITION</div>
+                <div class="caseInfo-content">Coma due to gunshot wounds</div>
+
+                <div class="caseInfo-label">LOCATION</div>
+                <div class="caseInfo-content">MI6 Medical Facility (Undisclosed)</div>
+
+                <div class="caseInfo-label">GUIDELINES FOR AGENT 0512</div>
+                <div class="caseInfo-content">
+                    <ul>
+                        <li>Inform Eve of her current condition</li>
+                        <li>Gain her trust, assure her your conversation is private</li>
+                        <li>Ask her what she knows about The Twelve</li>
+                        <li>Find out what she knows regarding Villanelle’s whereabouts</li>
+                        <li>Her mind may wander, please be patient with her</li>
+                    </ul>
+                </div>
+                <button type="submit" class="button" id="startButton" onclick="startSession()">START SESSION >></button>
             </div>
         </div>
+         
+        <div class="content-item">
+            <div class="container-item" id="chat_session">
+                <div>REMAINING TIME: <span id="timer"></span></div>
 
-        <div class="box" id="session_right">    
-            <div>Remaining time: <span id="timer"></span></div>
-
-            <div id="log"></div>
-
-            <input type="text" id="typehere" placeholder="type here">
+                <div id="log"></div>
+        
+                <input type="text" id="typehere" placeholder="Type here">
+            </div>
         </div>
 
         <script type="text/javascript" src="{{ url_for('static', filename='scripts/chatbot_script.js') }}"></script>
