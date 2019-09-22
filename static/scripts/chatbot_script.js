@@ -13,15 +13,13 @@
 
 var sessionStatus = true;
 // const sessionDuration = 225; // 3 min 45 secs aka pop song length
-// const sessionDuration = 135; // 2 min 15 sec for 083019 demo
-
-const sessionDuration = 45; // testing
+const sessionDuration = 135; // 2 min 15 sec for 083019 demo
+// const sessionDuration = 45; // testing
 
 var nlpStatus = true;
 // const nlpDuration = 135000; // duration for querying nlp model
-// const nlpDuration = 70000; // duration for querying nlp model for 083019 demo
-
-const nlpDuration = 1000; // testing
+const nlpDuration = 70000; // duration for querying nlp model for 083019 demo
+// const nlpDuration = 1000; // testing
 
 // var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000; // original
 var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000; // 083019 demo
@@ -73,7 +71,8 @@ function startCountdownTimer() {
         let timerDisplay = document.getElementById("timer");
         timerDisplay.textContent = minutes + ":" + seconds;
 
-        if (seconds == sessionDuration) {
+        if (seconds === (sessionDuration % 60)) {
+            console.log("got here");
             displaySessionStart();
         }
 
@@ -88,8 +87,9 @@ function startCountdownTimer() {
 // retrieves current date and time to print to log
 function displaySessionStart() {
     let start = getStats();
-    let startStr = "******* SESSION BEGIN " + start + " ******* ";
-    updateLog(startStr);
+    let startStr = "*** SESSION BEGIN " + start + " *** ";
+    let startPos = "center";
+    updateLog(startStr, startPos);
 };
 
 // receives guest input
@@ -99,10 +99,11 @@ function displaySessionStart() {
 document.querySelector("#typehere").onchange = () => {
     let inputField = document.querySelector("#typehere");
     let val = inputField.value;
+    let inputPos = "displayRight"
 
     inputField.value = "";
-
-    updateLogColor("> " + val);
+    
+    updateLog(val, inputPos);
 
     if (nlpStatus) {
         print_nlpResp(val);
@@ -116,9 +117,10 @@ document.querySelector("#typehere").onchange = () => {
 // prints that to log div after a slight delay
 async function print_nlpResp(val) {
     let nlpResp = await get_nlpResp(val);
+    let nlpPos = "displayLeft";
 
     setTimeout(() => {
-        updateLog(nlpResp)
+        updateLog(nlpResp, nlpPos);
     }, respTime);
 };
 
@@ -131,39 +133,34 @@ async function get_nlpResp(val) {
 };
 
 // if nlpStatus is false,
-// prints scripted resonses to log div
+// prints scripted repsonses to log div
 function print_finaleResp() {
+    let finalePos = "displayLeft";
+
     if (finaleIndex < finale.length && sessionStatus) {
         setTimeout(() => {
-            updateLog(finale[finaleIndex]);
+            updateLog(finale[finaleIndex], finalePos);
             finaleIndex++;
         }, respTime); 
     }
 
     if (finaleIndex === finale.length && sessionStatus) {
         setTimeout(() => {
-            updateLog(finale[finale.length - 1]);
+            updateLog(finale[finale.length - 1], finalePos);
         }, respTime);   
     };
 };
 
-// prints to log div
-function updateLog(str) {
+// prints to log div and at a position if specified
+function updateLog(str, pos) {
     if (sessionStatus || nlpStatus) {
-        let objDiv = document.getElementById("log");
-        objDiv.appendChild(paraWithText(str));
-        objDiv.scrollTop = objDiv.scrollHeight;
-    } else {
-        return;
-    }
-};
+ 
+        let div = document.createElement("div");
+        div.className = pos;
+        div.appendChild(paraWithText(str));
 
-// prints to log div with font color
-// refactor this!
-function updateLogColor(str) {
-    if (sessionStatus || nlpStatus) {
         let objDiv = document.getElementById("log");
-        objDiv.appendChild(paraWithText(str)).style.color = "rgb(224, 77, 86)";
+        objDiv.appendChild(div);
         objDiv.scrollTop = objDiv.scrollHeight;
     } else {
         return;
@@ -186,8 +183,9 @@ function endSession() {
     document.getElementById("typehere").style.display = "none";
 
     let end = getStats();
-    let endStr = "*******  SESSION END " + end + " *******";
-    updateLog(endStr);
+    let endStr = "***  SESSION END " + end + " ***";
+    let endPos = "center";
+    updateLog(endStr, endPos);
 
     sessionStatus = false;
 

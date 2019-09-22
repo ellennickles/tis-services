@@ -9,11 +9,11 @@ from semanticsimilaritychatbot import SemanticSimilarityChatbot
 app = Flask(__name__)
 
 print("loading model...")
-# nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_lg')
 print("finished loading model")
 
 print("loading chatbot...")
-# chatbot = SemanticSimilarityChatbot.load('./chatbotdb/tis_lines', nlp)
+chatbot = SemanticSimilarityChatbot.load('./chatbotdb/tis_lines', nlp)
 print("begin chatting")
 
 @app.route('/')
@@ -26,8 +26,8 @@ def start():
 
 @app.route('/response.json')
 def response():
-    # sentence = request.args['sentence']
-    # return jsonify({'result': chatbot.response_for(sentence)})
+    sentence = request.args['sentence']
+    return jsonify({'result': chatbot.response_for(sentence)})
     return jsonify({'result': 'yep'})
 
 if __name__ == "__main__":
