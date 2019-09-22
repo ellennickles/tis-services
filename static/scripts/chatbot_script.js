@@ -71,12 +71,11 @@ function startCountdownTimer() {
         let timerDisplay = document.getElementById("timer");
         timerDisplay.textContent = minutes + ":" + seconds;
 
-        if (seconds === (sessionDuration % 60)) {
-            console.log("got here");
+        if (time === sessionDuration) {
             displaySessionStart();
         }
 
-        if (--time < 0) {
+        if (--time <= 0) {
             time = 0;
             clearInterval(theTimer);
             endSession();

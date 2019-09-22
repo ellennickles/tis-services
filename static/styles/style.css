@@ -175,6 +175,7 @@ ul {
 /* print the chat div on the right side of chat window */
 .displayRight {
   display: block;
+  margin-left: 50%;
   text-align: right;
 }
 
