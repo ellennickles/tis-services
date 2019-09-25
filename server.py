@@ -28,6 +28,7 @@ def start():
 def response():
     sentence = request.args['sentence']
     return jsonify({'result': chatbot.response_for(sentence)})
+    return jsonify({'result': 'yep'})
 
 if __name__ == "__main__":
     app.run()

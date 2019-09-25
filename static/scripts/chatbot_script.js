@@ -13,18 +13,16 @@
 
 var sessionStatus = true;
 // const sessionDuration = 225; // 3 min 45 secs aka pop song length
-// const sessionDuration = 135; // 2 min 15 sec for 083019 demo
-
-const sessionDuration = 45; // testing
+const sessionDuration = 135; // 2 min 15 sec for 083019 demo
+// const sessionDuration = 45; // testing
 
 var nlpStatus = true;
 // const nlpDuration = 135000; // duration for querying nlp model
-// const nlpDuration = 70000; // duration for querying nlp model for 083019 demo
+const nlpDuration = 70000; // duration for querying nlp model for 083019 demo
+// const nlpDuration = 1000; // testing
 
-const nlpDuration = 1000; // testing
-
-// var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000; // original
-var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000; // 083019 demo
+var respTime = Math.floor(Math.random() * (3000 - 1000)) + 1000; // original
+// var respTime = Math.floor(Math.random() * (2700 - 1000)) + 1000; // 083019 demo
 
 var finaleIndex = 0;
 var finale = [
@@ -46,10 +44,10 @@ function startSession() {
     startCountdownTimer();
 };
 
-// displays the session_right div
+// displays the chat_session content
 function displayChatBox(){
     document.getElementById("startButton").style.display = "none";
-    document.getElementById("session_right").style.display = "block";
+    document.getElementById("chat_session").style.display = "block";
 }
 
 // start session timer
@@ -73,11 +71,11 @@ function startCountdownTimer() {
         let timerDisplay = document.getElementById("timer");
         timerDisplay.textContent = minutes + ":" + seconds;
 
-        if (seconds == sessionDuration) {
+        if (time === sessionDuration) {
             displaySessionStart();
         }
 
-        if (--time < 0) {
+        if (--time <= -1) {
             time = 0;
             clearInterval(theTimer);
             endSession();
@@ -88,8 +86,9 @@ function startCountdownTimer() {
 // retrieves current date and time to print to log
 function displaySessionStart() {
     let start = getStats();
-    let startStr = "*** Session Begin " + start + " ***";
-    updateLog(startStr);
+    let startStr = "*** SESSION BEGIN " + start + " *** ";
+    let startPos = "center";
+    updateLog(startStr, startPos);
 };
 
 // receives guest input
@@ -99,10 +98,11 @@ function displaySessionStart() {
 document.querySelector("#typehere").onchange = () => {
     let inputField = document.querySelector("#typehere");
     let val = inputField.value;
+    let inputPos = "displayRight"
 
     inputField.value = "";
-
-    updateLog("> " + val)
+    
+    updateLog(val, inputPos);
 
     if (nlpStatus) {
         print_nlpResp(val);
@@ -116,9 +116,10 @@ document.querySelector("#typehere").onchange = () => {
 // prints that to log div after a slight delay
 async function print_nlpResp(val) {
     let nlpResp = await get_nlpResp(val);
+    let nlpPos = "displayLeft";
 
     setTimeout(() => {
-        updateLog(nlpResp)
+        updateLog(nlpResp, nlpPos);
     }, respTime);
 };
 
@@ -131,27 +132,34 @@ async function get_nlpResp(val) {
 };
 
 // if nlpStatus is false,
-// prints scripted resonses to log div
+// prints scripted repsonses to log div
 function print_finaleResp() {
+    let finalePos = "displayLeft";
+
     if (finaleIndex < finale.length && sessionStatus) {
         setTimeout(() => {
-            updateLog(finale[finaleIndex]);
+            updateLog(finale[finaleIndex], finalePos);
             finaleIndex++;
         }, respTime); 
     }
 
     if (finaleIndex === finale.length && sessionStatus) {
         setTimeout(() => {
-            updateLog(finale[finale.length - 1]);
+            updateLog(finale[finale.length - 1], finalePos);
         }, respTime);   
     };
 };
 
-// prints to log div
-function updateLog(str) {
+// prints to log div and at a position if specified
+function updateLog(str, pos) {
     if (sessionStatus || nlpStatus) {
+ 
+        let div = document.createElement("div");
+        div.className = pos;
+        div.appendChild(paraWithText(str));
+
         let objDiv = document.getElementById("log");
-        objDiv.appendChild(paraWithText(str));
+        objDiv.appendChild(div);
         objDiv.scrollTop = objDiv.scrollHeight;
     } else {
         return;
@@ -174,13 +182,14 @@ function endSession() {
     document.getElementById("typehere").style.display = "none";
 
     let end = getStats();
-    let endStr = "*** Session End " + end + " ***";
-    updateLog(endStr);
+    let endStr = "***  SESSION END " + end + " ***";
+    let endPos = "center";
+    updateLog(endStr, endPos);
 
     sessionStatus = false;
 
-    let expired = "Session Expired"
-    document.getElementById("session_right").appendChild(paraWithText(expired));
+    let expired = "SESSION EXPIRED"
+    document.getElementById("chat_session").appendChild(paraWithText(expired));
 };
 
 // returns the current date and time

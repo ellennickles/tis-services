@@ -1,10 +1,76 @@
-.box {
-  float: left;
-  width: 500px;
-  margin: 20px;
+@font-face {
+  font-family: 'Roboto';
+  src: url('RobotoCondensed-Light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
 }
 
-/* index.html */
+@font-face {
+  font-family: 'Roboto';
+  src: url('RobotoCondensed-Bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 300;
+  font-size: 18px;
+  color: rgb(240, 240, 240);
+  background-color: rgb(50, 50, 50);
+}
+
+strong {
+  font-weight: 700;
+}
+
+.accent-color {
+  color: rgb(224, 77, 86);
+  font-weight: 700;
+}
+
+/* --- Header --- */
+.header-item {
+  padding: 30px;
+  font-size: 1.5em;
+  letter-spacing: .25em;
+}
+
+/* --- Content --- */
+.content-item {
+  float: left;  /* when using multiple items */
+  width: 33%;
+  margin: auto;
+}
+
+.container-item {
+  height: 700px;
+  padding: 30px;
+}
+
+.container-item-border {
+  height: 700px;
+  border: 1px solid  rgb(240, 240, 240);
+  padding: 30px;
+}
+
+.button {
+  outline: none;
+  font-size: 1em;
+  color: rgb(224, 77, 86);
+  background-color: rgb(50, 50, 50);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* ///////////// index.html only /////////////  */
 #memo1 {
   display: block;
 }
@@ -21,27 +87,113 @@
   display: none;
 }
 
+.memo-label {
+  font-family: serif;
+  letter-spacing: .05em;
+  margin-bottom: 40px;
+}
 
-/* chatbot.html */
-#session_right {
+.memo-header {
+  font-size: 2em;
+  letter-spacing: .05em;
+  margin-bottom: 40px;
+}
+
+.memo-subject {
+  letter-spacing: .05em;
+  margin-bottom: 60px;
+}
+
+.memo-body {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  letter-spacing: .03em;
+  line-height: 1.3em;
+  margin-bottom: 60px;
+}
+
+/* ///////////// chatbot.html only ///////////// */
+.caseInfo-label {
+  letter-spacing: .05em;
+  font-weight: 700;
+}
+
+.caseInfo-content {
+  letter-spacing: .03em;
+  margin-bottom: 20px;
+}
+
+ul {
+  margin-left: 20px;
+  padding: 0;
+  list-style-position: outside;
+}
+
+#chat_session {
   display: none;
 }
 
 #log {
-    width: 500px;
     height: 32em;
-    border: 1px grey solid;
+    border: 1px solid  rgb(240, 240, 240);
+    background-color: black;
     padding: 2px;
     overflow: scroll;
 }
 
-#log p {
-    margin: 5px;
-    font-family: sans-serif;
+
+#log div {
+  padding: inherit;
 }
 
+#log p {
+  margin: 0.5em;
+  font-size: 1em;
+  letter-spacing: .03em;
+  line-height: 1.3em;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+/* print the chat div in the center of the chat window */
+.center {
+  text-align: center;
+}
+
+/* print the chat div on the left side of chat window */
+.displayLeft {
+  display: block;
+  margin-right: 50%;
+  text-align: left;
+}
+
+.displayLeft p {
+  padding: 0.3em; 
+  background-color: rgb(224, 77, 86);
+}
+
+/* print the chat div on the right side of chat window */
+.displayRight {
+  display: block;
+  margin-left: 50%;
+  text-align: right;
+}
+
+.displayRight p {
+  padding: 0.3em; 
+  background-color: rgb(50, 50, 50);
+}
+
+
 #typehere {
-  width: 500px; 
+  outline: none;
+  width: 100%; 
   margin-top: 5px;
+  padding: 5px;
+  background-color: black;
+  border: 1px solid  rgb(240, 240, 240);
+  font-size: .9em;
+  caret-color: rgb(240, 240, 240);
+  color: rgb(240, 240, 240);
 }
 
