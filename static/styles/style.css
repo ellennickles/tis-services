@@ -170,6 +170,7 @@ ul {
 .displayLeft p {
   padding: 0.3em; 
   background-color: rgb(224, 77, 86);
+  text-align: left;
 }
 
 /* print the chat div on the right side of chat window */
@@ -182,6 +183,7 @@ ul {
 .displayRight p {
   padding: 0.3em; 
   background-color: rgb(50, 50, 50);
+  text-align: left;
 }
 
 
