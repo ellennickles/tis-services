@@ -1,6 +1,10 @@
-# Thought Identification System Services
+# Thought Identification System
 
-description tba
+The Thought Identification System or TIS, is the name of the technology used in the Eve Polastri Chatbot. 
+
+Using machine learning and designed in the form of a web application, Eve Polastri Chatbot is a text-based chatting experience based on the hit BBC America show, *Killing Eve*. The goal of this project is to provide fans of the show with an opportunity to engage with one of its main characters, Eve Polastri, in the narrative space after the cliffhanger of the second season of the television show. 
+
+In this experience, Eve, after being shot, is now in a coma at an MI6 medical facility in London. The user is put in the role of a newly hired MI6 agent and tasked to talk to Eve’s mind through a newly developed technology called the Thought Identification System. By texting back and forth with Eve, the user gets to learn more about her, and ultimately, retrieves information from her regarding Villanelle's whereabouts.
 
 A project by [Carrie Sijia Wang](https://carriesijiawang.com/) and [Ellen Nickles](https://ellennickles.site/)
 
