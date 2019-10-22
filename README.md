@@ -6,7 +6,7 @@ Using machine learning and designed in the form of a web application, Eve Polast
 
 In this experience, Eve, after being shot, is now in a coma at an MI6 medical facility in London. The user is put in the role of a newly hired MI6 agent and tasked to talk to Eve’s mind through a newly developed technology called the Thought Identification System. By texting back and forth with Eve, the user gets to learn more about her, and ultimately, retrieves information from her regarding Villanelle's whereabouts.
 
-A project by [Carrie Sijia Wang](https://carriesijiawang.com/) and [Ellen Nickles](https://ellennickles.site/) as part of the AMC project 
+A project by [Carrie Sijia Wang](https://carriesijiawang.com/) and [Ellen Nickles](https://ellennickles.site/) as part of the AMC Project Development Studio, Summer 2019.
 
 With guidance and [code](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) from [Allison Parrish](https://www.decontextualize.com)
 
