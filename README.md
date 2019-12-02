@@ -8,7 +8,7 @@ In this experience, Eve, after being shot, is now in a coma at an MI6 medical fa
 
 A project by [Carrie Sijia Wang](https://carriesijiawang.com/) and [Ellen Nickles](https://ellennickles.site/) as part of the AMC Project Development Studio, Summer 2019.
 
-With guidance and [code](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) from [Allison Parrish](https://www.decontextualize.com)
+With guidance and [code](https://gist.github.com/aparrish/114dd7018134c5da80bae0a101866581) adapted from [Allison Parrish](https://www.decontextualize.com)
 
 ---
 
